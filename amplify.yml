@@ -5,15 +5,14 @@ backend:
       commands:
         - nvm install 20
         - nvm use 20
-        - npm install
-        - npm install @parcel/watcher-linux-x64-glibc
+        - npm ci
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
     preBuild:
       commands:
         - nvm use 20
-        - npm install
+        - npm ci
     build:
       commands:
         - npm run build
@@ -24,4 +23,3 @@ frontend:
   cache:
     paths:
       - .npm/**/*
-      - node_modules/**/*
